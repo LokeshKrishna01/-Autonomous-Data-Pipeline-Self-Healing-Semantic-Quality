@@ -1,0 +1,41 @@
+{
+  "incident": {
+    "pipeline_name": "orders_daily_loader",
+    "run_id": "run_date_format_20261027_040015",
+    "git_commit_sha": "a1b2c3d4e5f6",
+    "triggered_at": "2026-10-27T04:00:15.088198Z",
+    "failure_mode": "date_format"
+  },
+  "error": {
+    "raw_error_log": "FormatParsingError: Could not parse 'order_date' column.\n  Expected format : YYYY-MM-DD\n  Sample values   : ['18-01-2024', '19-01-2024']\nTraceback (most recent call last):\n  File 'pipeline/transformers/date_normalizer.py', line 42, in parse_dates\n    df['order_date'] = pd.to_datetime(df['order_date'], format='%Y-%m-%d')\n  File 'pandas/core/tools/datetimes.py', line 1067, in to_datetime\nValueError: time data \"18-01-2024\" doesn't match format \"%Y-%m-%d\". You might want to try:\n    - passing `format` if your strings have a consistent format;\n    - passing `format='ISO8601'` if your strings are all ISO8601 but not necessarily in exactly the same format;\n    - passing `format='mixed'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this."
+  },
+  "batch_metadata": {
+    "total_records": 2,
+    "sample_columns": [
+      "order_id",
+      "customer_id",
+      "postal_code",
+      "amount",
+      "order_date",
+      "status"
+    ],
+    "sample_rows": [
+      {
+        "order_id": "ORD-007",
+        "customer_id": "C-106",
+        "postal_code": "10003",
+        "amount": 75.0,
+        "order_date": "18-01-2024",
+        "status": "shipped"
+      },
+      {
+        "order_id": "ORD-008",
+        "customer_id": "C-107",
+        "postal_code": "60601",
+        "amount": 430.1,
+        "order_date": "19-01-2024",
+        "status": "pending"
+      }
+    ]
+  }
+}

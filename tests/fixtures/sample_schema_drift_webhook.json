@@ -1,0 +1,41 @@
+{
+  "incident": {
+    "pipeline_name": "orders_daily_loader",
+    "run_id": "run_schema_drift_20261027_040015",
+    "git_commit_sha": "a1b2c3d4e5f6",
+    "triggered_at": "2026-10-27T04:00:15.085200Z",
+    "failure_mode": "schema_drift"
+  },
+  "error": {
+    "raw_error_log": "SchemaValidationError: Column(s) missing from incoming batch.\n  Expected : ['amount', 'customer_id', 'order_date', 'order_id', 'postal_code', 'status']\n  Received : ['amount', 'customer_id', 'order_date', 'order_id', 'status', 'zip_code']\n  Missing  : ['postal_code']\n  Extra    : ['zip_code']\nTraceback (most recent call last):\n  File 'pipeline/loaders/orders_loader.py', line 84, in validate_schema\n    raise SchemaValidationError(f'Missing columns: {missing}')\nSchemaValidationError: Missing columns: ['postal_code']"
+  },
+  "batch_metadata": {
+    "total_records": 3,
+    "sample_columns": [
+      "order_id",
+      "customer_id",
+      "zip_code",
+      "amount",
+      "order_date",
+      "status"
+    ],
+    "sample_rows": [
+      {
+        "order_id": "ORD-004",
+        "customer_id": "C-103",
+        "zip_code": "10002",
+        "amount": 55.0,
+        "order_date": "2024-01-18",
+        "status": "shipped"
+      },
+      {
+        "order_id": "ORD-005",
+        "customer_id": "C-104",
+        "zip_code": "94102",
+        "amount": 320.75,
+        "order_date": "2024-01-19",
+        "status": "pending"
+      }
+    ]
+  }
+}
